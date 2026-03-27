@@ -1,0 +1,41 @@
+Harika bir başlangıç! `so_long` projesi, 42 Common Core'un en keyifli projelerinden biridir çünkü hem grafik programlamaya giriş yapmanı sağlar hem de algoritma yeteneğini (Flood Fill gibi) test eder.
+
+Önceki dosyalarını (Libft ve Get_Next_Line) eklemiş olman çok büyük bir avantaj, bunlar senin projenin motoru olacak[cite: 38, 39, 101]. Hazırladığın `Makefile` da Linux için MLX bayraklarını içeriyor, bu da teknik altyapının hazır olduğunu gösteriyor.
+
+İşte 1 yıl aradan sonra projeyi sıfırdan, adım adım ve hatasız bitirmen için hazırladığım yol haritası:
+
+### 1. Aşama: Harita Okuma ve Yapısal Hazırlık (Parsing)
+Öncelikle programına verilen `.ber` uzantılı dosyayı okumayı ve içeriğini bir `char **` (matris) yapısına aktarmayı öğretmelisin[cite: 101, 105].
+* **Haritayı Okuma:** `get_next_line` kullanarak haritayı satır satır oku[cite: 101].
+* **Dikdörtgen Kontrolü:** Tüm satırların uzunluğu aynı mı? [cite: 147]
+* **Duvar Kontrolü:** Harita tamamen '1' (duvar) ile çevrili mi? [cite: 148]
+* **Karakter Kontrolü:** Haritada sadece `0, 1, C, E, P` karakterleri mi var? [cite: 132]
+* **Varlık Sayısı:** Tam olarak **1 adet Çıkış (E)**, **1 adet Başlangıç (P)** ve **en az 1 adet Toplanabilir (C)** var mı? [cite: 144, 146]
+
+### 2. Aşama: Algoritma Kontrolü (Flood Fill)
+Görsellere geçmeden önce haritanın "oynanabilir" olduğundan emin olmalısın. PDF'in 11. sayfasında belirtilen "valid path" kuralı tam olarak budur[cite: 149].
+* **Flood Fill:** Oyuncunun (P) bulunduğu noktadan başlayarak, duvarlara çarpmadan tüm toplanabilirleri (C) toplayıp çıkışa (E) ulaşıp ulaşamadığını kontrol eden bir algoritma yazmalısın.
+* **Önemli:** Bu kontrolü yaparken orijinal haritayı bozmamak için haritanın bir kopyasını kullanmalısın.
+
+### 3. Aşama: MiniLibX Entegrasyonu ve Pencere Yönetimi
+Harita geçerliyse, artık bir pencere açma vaktidir.
+* **MLX Başlatma:** `mlx_init` ile kütüphaneyi başlat, `mlx_new_window` ile pencereyi oluştur[cite: 21, 122].
+* **XPM Dosyaları:** Resimlerini `.xpm` formatında hazırla. `mlx_xpm_file_to_image` fonksiyonu ile bu resimleri belleğe yükle[cite: 5].
+* **Ekrana Çizme:** Haritadaki karakterlere göre (örneğin '1' görünce duvar resmi, 'C' görünce balık resmi) `mlx_put_image_to_window` kullanarak görselleri ekrana bas[cite: 126].
+
+### 4. Aşama: Hareket ve Event Handling (Olay Yönetimi)
+Oyunun etkileşimli hale geldiği kısımdır.
+* **Klavye Girdileri:** `mlx_hook` veya `mlx_key_hook` kullanarak W, A, S, D tuşlarını dinle[cite: 112].
+* **Hareket Mantığı:** Oyuncu hareket ettiğinde önündeki karakter '1' (duvar) değilse konumunu güncelle. Eğer 'E' (çıkış) ise ve tüm 'C'ler toplandıysa oyunu bitir[cite: 111, 114].
+* **Adım Sayısı:** Her başarılı harekette terminale (shell) atılan adım sayısını yazdır[cite: 115].
+* **Temiz Çıkış:** ESC tuşuna basıldığında veya penceredeki "X" ikonuna tıklandığında bellek sızıntısı (memory leak) olmadan programı kapat[cite: 124, 125].
+
+### 5. Aşama: Hata Yönetimi ve Son Dokunuşlar
+* **Error Mesajları:** Herhangi bir hata durumunda (yanlış harita, dosya bulunamadı vb.) ekrana `Error\n` ve ardından açıklayıcı bir mesaj yazdırıp programı sonlandır[cite: 158].
+* **Bellek Kontrolü:** `malloc` ile ayırdığın tüm alanları ve MLX resimlerini/penceresini program kapanırken temizle (`free`, `mlx_destroy_window`, vb.)[cite: 31].
+* **Norminette:** Kodunun 42 normlarına uygun olduğundan emin ol[cite: 27].
+
+---
+
+**Nereden Başlayalım?**
+Eğer hazırsan, **1. Aşama (Parsing)** ile başlayalım. Haritayı okuyup bir matrise aktaracak olan `map_controller.c` gibi bir dosya üzerinde çalışmaya ne dersin? Takıldığın yerde bana karakter kontrollerini veya `get_next_line` entegrasyonunu sorabilirsin.

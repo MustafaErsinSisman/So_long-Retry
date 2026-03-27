@@ -15,7 +15,7 @@ DIR_MINILBIX	= minilibx-linux
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
+$(NAME): $(OBJS)
 	make -s -C $(DIR_GNL)
 	make -s -C $(DIR_LIBFT)
 	make -s -C $(DIR_COLLECTOR)

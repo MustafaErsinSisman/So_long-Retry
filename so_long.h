@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/27 14:59:17 by musisman          #+#    #+#             */
-/*   Updated: 2026/03/27 14:59:17 by musisman         ###   ########.fr       */
+/*   Created: 2026/03/27 15:15:08 by musisman          #+#    #+#             */
+/*   Updated: 2026/03/27 15:15:08 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
-#include "so_long.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-int main(int ac, char **av)
-{
-	write(1, av[ac - 1],  ft_strlen(av[ac - 1]));
-	write(1,"\n",1);
-	return 0;
-}
+# include "./collector/collector.h"
+# include "./libft/libft.h"
+# include "./get_next_line/get_next_line.h"
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+#endif
