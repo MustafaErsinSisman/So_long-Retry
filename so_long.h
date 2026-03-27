@@ -21,5 +21,7 @@
 # include <unistd.h>
 
 # define ERR_ARG "Wrong argument!\n"
+# define ERR_EMP "Empty map!\n"
+# define ERR_OPN "File couldn't open!\n"
 
 #endif

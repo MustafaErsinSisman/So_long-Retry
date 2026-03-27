@@ -6,13 +6,13 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:52:44 by musisman          #+#    #+#             */
-/*   Updated: 2026/03/27 16:25:55 by musisman         ###   ########.fr       */
+/*   Updated: 2026/03/27 17:02:18 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	check(int b, char *s, char *buffer)
+int	check(int b, char *s)
 {
 	if (b == -1)
 		return (0);
@@ -36,7 +36,7 @@ char	*ft_buffer_s(int fd, char *s)
 	while (ft_strchr(s, '\n') == 0 && b != 0)
 	{
 		b = read(fd, buffer, BUFFER_SIZE);
-		if (!check(b, s, buffer))
+		if (!check(b, s))
 			return (NULL);
 		buffer[b] = '\0';
 		s = ft_strjoin_diff(s, buffer);

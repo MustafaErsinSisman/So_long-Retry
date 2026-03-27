@@ -6,21 +6,11 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:39 by musisman          #+#    #+#             */
-/*   Updated: 2026/03/27 16:23:24 by musisman         ###   ########.fr       */
+/*   Updated: 2026/03/27 17:18:17 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strjoin_diff(char *s, char *buffer)
 {

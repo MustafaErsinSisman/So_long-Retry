@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:54:34 by musisman          #+#    #+#             */
-/*   Updated: 2026/03/27 16:26:16 by musisman         ###   ########.fr       */
+/*   Updated: 2026/03/27 17:18:12 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+# include "../libft/libft.h"
+# include "../collector/collector.h"
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 
 # endif
 
-size_t	ft_strlen(const char *s);
 char	*ft_strjoin_diff(char *s, char *buffer);
 char	*ft_strchr(const char *s, int c);
 char	*ft_line_s(char *s);
