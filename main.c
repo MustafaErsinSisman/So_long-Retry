@@ -62,14 +62,48 @@ char	**read_ber_file(char *ber)
 	return (ber_file);
 }
 
+int is_it_asset(char c)
+{
+	if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
+		return (1);
+	else
+		return(0);
+}
+
+int is_it_rectengular(char** ber)
+{
+	int	i;
+	int	first_line_asset;
+
+	i = -1;
+	first_line_asset = 0;
+	while (ber[0][++i])
+	{
+		if (is_it_asset(ber[0][i]))
+			first_line_asset++;
+	}
+	while (ber[++i])
+	{
+		if (ft_strlen(ber[i]) != ft_strlen(ber[i]))
+			return (0);
+	}
+	return (1);
+}
+
+void check_map(char** ber)
+{
+	if (!is_it_rectengular(ber))
+		error(ERR_REC);
+
+}
+
 int	main(int ac, char **av)
 {
 	char	**map;
 
 	if(ac != 2)
 		error(ERR_ARG);
-	map = read_ber_file(av[1]);
-	write(1, map[1], ft_strlen(map[1]));
+	check_map(read_ber_file(av[1]));
 	ft_free();
 	return (0);
 }
