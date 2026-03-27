@@ -1,30 +1,40 @@
 NAME 		= so_long
 CC		= cc
 CFLAGS 		= -Wall -Wextra -Werror
-SRCS		= so_long.c so_long_utils.c map_controller.c map_check.c game_mlx_controller.c \
-		  get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
+LIBS		= collector/collector.a libft/libft.a get_next_line/get_next_line.a minilibx-linux/libmlx.a -L minilibx-linux -lmlx -L/usr/X11R6/lib -lXext -lX11 -lm -lbsd
 
-LIBFT		= libft/libft.a
+SRCS		= main.c
+OBJS		= $(SRCS:.c=.o)
 
-MLX_LIB		= minilibx-linux/libmlx.a
+RM		= rm -f
 
-MLX_FLAGS	= -L minilibx-linux -lmlx -L/usr/X11R6/lib -lXext -lX11 -lm -lbsd
+DIR_GNL		= get_next_line
+DIR_LIBFT	= libft
+DIR_COLLECTOR	= collector
+DIR_MINILBIX	= minilibx-linux
 
 all: $(NAME)
 
 $(NAME): $(SRCS)
-	make -s -C ./libft 
-	make -s -C ./minilibx-linux
-	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLX_LIB) $(MLX_FLAGS) -o $(NAME)
+	make -s -C $(DIR_GNL)
+	make -s -C $(DIR_LIBFT)
+	make -s -C $(DIR_COLLECTOR)
+	make -s -C $(DIR_MINILBIX)
+	$(CC) $(OBJS) $(LIBS) -o $(NAME)
 
 clean:
-	make clean -s -C ./libft
-	make clean -s -C ./minilibx-linux
+	$(RM) $(OBJS)
+	make -s -C $(DIR_GNL) clean
+	make -s -C $(DIR_LIBFT) clean
+	make -s -C $(DIR_COLLECTOR) clean
+	make -s -C $(DIR_MINILBIX) clean
 
 fclean: clean
-	make fclean -s -C ./libft
-	rm -rf $(NAME)
-	rm -rf $(MLX_LIB)
+	$(RM) $(NAME)
+	make -s -C $(DIR_GNL) fclean
+	make -s -C $(DIR_LIBFT) fclean
+	make -s -C $(DIR_COLLECTOR) fclean
+	make -s -C $(DIR_MINILBIX) clean
 
 re: fclean all
 
