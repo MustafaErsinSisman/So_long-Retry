@@ -20,4 +20,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define ERR_ARG "Wrong argument!\n"
+
 #endif

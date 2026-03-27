@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: musisman <<musisman@student.42.fr>>        +#+  +:+       +#+        */
+/*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:52:44 by musisman          #+#    #+#             */
-/*   Updated: 2025/03/20 09:03:19 by musisman         ###   ########.fr       */
+/*   Updated: 2026/03/27 16:25:55 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,11 @@
 int	check(int b, char *s, char *buffer)
 {
 	if (b == -1)
-	{
-		free(buffer);
-		free(s);
 		return (0);
-	}
 	else if (b == 0)
 	{
 		if (!s || s[0] == '\0')
-		{
-			free(buffer);
-			free(s);
 			return (0);
-		}
 	}
 	return (1);
 }
@@ -37,7 +29,7 @@ char	*ft_buffer_s(int fd, char *s)
 	char	*buffer;
 	int		b;
 
-	buffer = malloc(BUFFER_SIZE + 1);
+	buffer = ft_malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	b = 1;
@@ -49,20 +41,14 @@ char	*ft_buffer_s(int fd, char *s)
 		buffer[b] = '\0';
 		s = ft_strjoin_diff(s, buffer);
 	}
-	free(buffer);
 	return (s);
 }
 
-char	*get_next_line(int fd, int free_static)
+char	*get_next_line(int fd)
 {
 	static char	*s ;
 	char		*ptr;
 
-	if (free_static)
-	{
-		free(s);
-		return (0);
-	}
 	if (fd < 0 && BUFFER_SIZE < 1)
 		return (NULL);
 	s = ft_buffer_s(fd, s);

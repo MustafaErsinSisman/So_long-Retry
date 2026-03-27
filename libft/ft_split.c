@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msisman <<msisman@student.42.fr>>          +#+  +:+       +#+        */
+/*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:06:20 by musisman          #+#    #+#             */
-/*   Updated: 2024/10/31 16:23:27 by msisman          ###   ########.fr       */
+/*   Updated: 2026/03/27 16:27:01 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,7 @@ static void	free_tab(char **sp)
 	if (sp)
 	{
 		while (sp[i])
-		{
-			free(sp[i]);
 			i++;
-		}
-		free(sp);
 	}
 }
 

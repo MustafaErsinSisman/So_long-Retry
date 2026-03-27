@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:39 by musisman          #+#    #+#             */
-/*   Updated: 2025/02/26 14:58:01 by musisman         ###   ########.fr       */
+/*   Updated: 2026/03/27 16:23:24 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ char	*ft_strjoin_diff(char *s, char *buffer)
 
 	if (!s)
 	{
-		s = malloc(1);
+		s = ft_malloc(1);
 		s[0] = '\0';
 	}
-	a = malloc(ft_strlen(s) + ft_strlen(buffer) + 1);
+	a = ft_malloc(ft_strlen(s) + ft_strlen(buffer) + 1);
 	if (a == NULL)
 		return (NULL);
 	i = 0;
@@ -46,7 +46,6 @@ char	*ft_strjoin_diff(char *s, char *buffer)
 	while (buffer[i])
 		a[j++] = buffer[i++];
 	a[ft_strlen(s) + ft_strlen(buffer)] = '\0';
-	free(s);
 	return (a);
 }
 
@@ -78,7 +77,7 @@ char	*ft_line_s(char *s)
 		return (NULL);
 	while (s[i] && s[i] != '\n')
 		i++;
-	ptr = malloc(i + 2);
+	ptr = ft_malloc(i + 2);
 	if (!ptr)
 		return (NULL);
 	i = 0;
@@ -107,17 +106,13 @@ char	*ft_new_line_s(char *s)
 	while (s[i] && s[i] != '\n')
 		i++;
 	if (!s[i])
-	{
-		free(s);
 		return (NULL);
-	}
-	a = malloc(ft_strlen(s) - i + 1);
+	a = ft_malloc(ft_strlen(s) - i + 1);
 	if (!a)
 		return (NULL);
 	i++;
 	while (s[i])
 		a[j++] = s[i++];
 	a[j] = '\0';
-	free(s);
 	return (a);
 }
