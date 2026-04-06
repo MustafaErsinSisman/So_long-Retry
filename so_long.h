@@ -21,9 +21,11 @@
 # include <unistd.h>
 
 # define ERR_ARG "Wrong argument!\n"
+# define ERR_ASS "Wrong asset!\n"
 # define ERR_EMP "Empty map!\n"
 # define ERR_OPN "File couldn't open!\n"
 # define ERR_REC "Map is not rectengular!\n"
+# define ERR_WAL "Map is not close with wall!\n"
 
 // silinecek
 

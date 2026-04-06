@@ -43,15 +43,25 @@ static void	is_it_ber_file(char *ber)
 		error(ERR_ARG);
 }
 
-static void	change_new_line(char *line)
+static void	remove_unnecessary_char(char *line)
 {
 	size_t	len;
+	int	i;
 
 	if (line)
 	{
 		len = ft_strlen(line);
 		if (len > 0 && line[len - 1] == '\n')
 			line[len - 1] = '\0';
+		i = -1;
+		while (line[++i])
+		{
+			if (ft_isspace(line[i]))
+			{
+				line[i] = '\0';
+				break ;
+			}
+		}
 	}
 }
 
@@ -74,7 +84,7 @@ char	**read_ber_file(char *ber)
 	while (++i < line_count)
 	{
 		ber_file[i] = get_next_line(fd);
-		change_new_line(ber_file[i]);
+		remove_unnecessary_char(ber_file[i]);
 	}
 	ber_file[i] = NULL;
 	close(fd);

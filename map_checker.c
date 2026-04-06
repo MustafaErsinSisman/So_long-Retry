@@ -39,7 +39,48 @@ static void	is_it_rectengular(char** ber)
 	}
 }
 
+static void	is_is_asset(char** ber)
+{
+	int	i;
+	int	j;
+	char	c;
+
+	i = -1;
+	while (ber[++i])
+	{
+		j = -1;
+		while (ber[i][++j])
+		{
+			c = ber[i][j];
+			if (!(c == '0' || c == '1' || c == 'P' || c == 'E' || c == 'C'))
+				error(ERR_ASS);
+		}
+	}
+}
+
+void	is_it_enclosed(char** ber)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (ber[++i])
+	{
+		j = -1;
+		while (ber[i][++j])
+		{
+			if (i == 0 || ber[i + 1] == NULL || j == 0 || ber[i][j + 1] == '\0')
+			{
+				if (ber[i][j] != '1')
+					error(ERR_WAL);
+			}
+		}
+	}
+}
+
 void check_map(char** ber)
 {
 	is_it_rectengular(ber);
+	is_is_asset(ber);
+	is_it_enclosed(ber);
 }
