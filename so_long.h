@@ -29,4 +29,9 @@
 
 # include <stdio.h>
 
+//
+
+char	**read_ber_file(char *ber);
+void	check_map(char** ber);
+void	error(char* err);
 #endif

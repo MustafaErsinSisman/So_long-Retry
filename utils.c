@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/27 14:59:17 by musisman          #+#    #+#             */
-/*   Updated: 2026/03/27 14:59:17 by musisman         ###   ########.fr       */
+/*   Created: 2026/04/06 15:29:24 by musisman          #+#    #+#             */
+/*   Updated: 2026/04/06 15:29:24 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
 #include "so_long.h"
 
-int	main(int ac, char **av)
+void	error(char* err)
 {
-	// char	**map;
-
-	if(ac != 2)
-		error(ERR_ARG);
-	check_map(read_ber_file(av[1]));
+	write(2, "Error\n", 7);
+	write(2, err, ft_strlen(err));
 	ft_free();
-	return (0);
+	exit(1);
 }

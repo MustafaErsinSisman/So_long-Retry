@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/27 14:59:17 by musisman          #+#    #+#             */
-/*   Updated: 2026/03/27 14:59:17 by musisman         ###   ########.fr       */
+/*   Created: 2026/04/06 14:55:49 by musisman          #+#    #+#             */
+/*   Updated: 2026/04/06 14:55:49 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
-#include "so_long.h"
-
-int	main(int ac, char **av)
+int	ft_isspace(int c)
 {
-	// char	**map;
-
-	if(ac != 2)
-		error(ERR_ARG);
-	check_map(read_ber_file(av[1]));
-	ft_free();
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (1);
 	return (0);
 }

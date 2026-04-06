@@ -6,7 +6,7 @@
 /*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:11:53 by musisman          #+#    #+#             */
-/*   Updated: 2026/03/27 17:13:17 by musisman         ###   ########.fr       */
+/*   Updated: 2026/04/06 14:59:24 by musisman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
+int					ft_isspace(int c);
 void				*ft_memset(void *b, int c, size_t len);
 size_t				ft_strlen(const char *s);
 void				ft_bzero(void *s, size_t n);
