@@ -34,7 +34,6 @@ static void	is_it_rectengular(char** ber)
 			else if (ft_isprint(ber[i][j]))
 				line_len++;
 		}
-		printf("ber: * %s * flc: %ld lc: %ld\n", ber[i], f_line_len, line_len);
 		if (line_len != f_line_len && i != 0)
 			error(ERR_REC);
 	}
