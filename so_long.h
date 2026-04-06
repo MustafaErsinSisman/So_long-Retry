@@ -25,4 +25,8 @@
 # define ERR_OPN "File couldn't open!\n"
 # define ERR_REC "Map is not rectengular!\n"
 
+// silinecek
+
+# include <stdio.h>
+
 #endif

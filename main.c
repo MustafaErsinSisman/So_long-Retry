@@ -40,6 +40,18 @@ int	get_line_count(char *ber)
 	return (count);
 }
 
+int	is_it_ber_file(char *ber)
+{
+	size_t	len;
+
+	len = ft_strlen(ber);
+	if (len < 4)
+		return (0);
+	if (ft_strncmp(&ber[len - 4], ".ber", 4))
+		error(ERR_ARG);
+	return (1);
+}
+
 char	**read_ber_file(char *ber)
 {
 	char	**ber_file;
@@ -47,6 +59,7 @@ char	**read_ber_file(char *ber)
 	int		line_count;
 	int		i;
 
+	is_it_ber_file(ber);
 	line_count = get_line_count(ber);
 	if (line_count == 0)
 		error(ERR_EMP);
@@ -62,30 +75,28 @@ char	**read_ber_file(char *ber)
 	return (ber_file);
 }
 
-int is_it_asset(char c)
-{
-	if (c == '1' || c == '0' || c == 'P' || c == 'C' || c == 'E')
-		return (1);
-	else
-		return(0);
-}
-
 int is_it_rectengular(char** ber)
 {
-	int	i;
-	int	first_line_asset;
+	size_t	f_letter_count;
+	size_t	letter_count;
+	size_t	i;
+	size_t	j;
 
 	i = -1;
-	first_line_asset = 0;
-	while (ber[0][++i])
-	{
-		if (is_it_asset(ber[0][i]))
-			first_line_asset++;
-	}
+	f_letter_count = 0;
 	while (ber[++i])
 	{
-		if (ft_strlen(ber[i]) != ft_strlen(ber[i]))
-			return (0);
+		j = -1;
+		letter_count = 0;
+		while (ber[i][++j])
+		{
+			if (ft_isalnum(ber[i][j]) && i == 0)
+				f_letter_count++;
+			else if (ft_isalnum(ber[i][j]))
+				letter_count++;
+		}
+		if (letter_count != f_letter_count && i != 0)
+			error(ERR_REC);
 	}
 	return (1);
 }
@@ -99,7 +110,7 @@ void check_map(char** ber)
 
 int	main(int ac, char **av)
 {
-	char	**map;
+	// char	**map;
 
 	if(ac != 2)
 		error(ERR_ARG);
