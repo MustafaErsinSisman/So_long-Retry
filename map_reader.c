@@ -53,14 +53,13 @@ static void	remove_unnecessary_char(char *line)
 		len = ft_strlen(line);
 		if (len > 0 && line[len - 1] == '\n')
 			line[len - 1] = '\0';
-		i = -1;
-		while (line[++i])
+		i = ft_strlen(line) + 1;
+		while (line[--i])
 		{
 			if (ft_isspace(line[i]))
-			{
 				line[i] = '\0';
+			if (ft_isprint(line[i]))
 				break ;
-			}
 		}
 	}
 }

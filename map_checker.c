@@ -27,8 +27,6 @@ static void	is_it_rectengular(char** ber)
 		line_len = 0;
 		while (ber[i][++j])
 		{
-			if (ft_isspace(ber[i][j]))
-				break;
 			if (ft_isprint(ber[i][j]) && i == 0)
 				f_line_len++;
 			else if (ft_isprint(ber[i][j]))
