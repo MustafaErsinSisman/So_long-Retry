@@ -22,6 +22,7 @@
 
 # define ERR_ARG "Wrong argument!\n"
 # define ERR_ASS "Wrong asset!\n"
+# define ERR_CNT "Wrong count of P, E or C!\n"
 # define ERR_EMP "Empty map!\n"
 # define ERR_OPN "File couldn't open!\n"
 # define ERR_REC "Map is not rectengular!\n"
