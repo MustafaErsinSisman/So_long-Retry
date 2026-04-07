@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	is_it_rectengular(char** ber)
+static void	is_it_rectengular(char **ber)
 {
 	size_t	f_line_len;
 	size_t	line_len;
@@ -37,10 +37,10 @@ static void	is_it_rectengular(char** ber)
 	}
 }
 
-static void	is_is_asset(char** ber)
+static void	is_is_asset(char **ber)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	c;
 
 	i = -1;
@@ -55,7 +55,8 @@ static void	is_is_asset(char** ber)
 		}
 	}
 }
-static void	is_it_one_asset(char** ber)
+
+static void	is_it_one_asset(char **ber)
 {
 	int	i;
 	int	j;
@@ -77,14 +78,14 @@ static void	is_it_one_asset(char** ber)
 			else if (ber[i][j] == 'E')
 				e_count++;
 			if (ber[i][j] == 'C')
-				c_count++;			
+				c_count++;
 		}
 	}
 	if (p_count != 1 || e_count != 1 || c_count < 1)
 		error(ERR_CNT);
 }
 
-static void	is_it_enclosed(char** ber)
+static void	is_it_enclosed(char **ber)
 {
 	int	i;
 	int	j;
@@ -104,7 +105,7 @@ static void	is_it_enclosed(char** ber)
 	}
 }
 
-void check_map(char** ber)
+void	check_map(char **ber)
 {
 	is_it_rectengular(ber);
 	is_is_asset(ber);

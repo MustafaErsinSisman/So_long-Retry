@@ -16,7 +16,7 @@ static int	get_line_count(char *ber)
 {
 	int		fd;
 	int		count;
-	char		*line;
+	char	*line;
 
 	count = 0;
 	fd = open(ber, O_RDONLY);
@@ -46,7 +46,7 @@ static void	is_it_ber_file(char *ber)
 static void	remove_unnecessary_char(char *line)
 {
 	size_t	len;
-	int	i;
+	int		i;
 
 	if (line)
 	{

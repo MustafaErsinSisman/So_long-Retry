@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	error(char* err)
+void	error(char *err)
 {
 	write(2, "Error\n", 6);
 	write(2, err, ft_strlen(err));

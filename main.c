@@ -15,9 +15,9 @@
 
 int	main(int ac, char **av)
 {
-	// char	**map;
+	char	**map;
 
-	if(ac != 2)
+	if (ac != 2)
 		error(ERR_ARG);
 	check_map(read_ber_file(av[1]));
 	ft_free();
