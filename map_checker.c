@@ -105,10 +105,11 @@ static void	is_it_enclosed(char **ber)
 	}
 }
 
-void	check_map(char **ber)
+char	**check_map(char **ber)
 {
 	is_it_rectengular(ber);
 	is_is_asset(ber);
 	is_it_one_asset(ber);
 	is_it_enclosed(ber);
+	return (ber);
 }

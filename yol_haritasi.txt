@@ -39,3 +39,4 @@ Oyunun etkileşimli hale geldiği kısımdır.
 
 **Nereden Başlayalım?**
 Eğer hazırsan, **1. Aşama (Parsing)** ile başlayalım. Haritayı okuyup bir matrise aktaracak olan `map_controller.c` gibi bir dosya üzerinde çalışmaya ne dersin? Takıldığın yerde bana karakter kontrollerini veya `get_next_line` entegrasyonunu sorabilirsin.
+

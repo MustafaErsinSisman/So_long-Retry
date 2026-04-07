@@ -15,11 +15,9 @@
 
 int	main(int ac, char **av)
 {
-	char	**map;
-
 	if (ac != 2)
 		error(ERR_ARG);
-	check_map(read_ber_file(av[1]));
+	flood_fill(check_map(read_ber_file(av[1])));
 	ft_free();
 	return (0);
 }
