@@ -24,10 +24,12 @@
 # define ERR_ASS "Wrong asset!\n"
 # define ERR_CNT "Wrong count of P, E or C!\n"
 # define ERR_EMP "Empty map!\n"
+# define ERR_INI "MLX initialization failed!\n"
 # define ERR_MAP "Map is not valid!\n"
 # define ERR_OPN "File couldn't open!\n"
 # define ERR_REC "Map is not rectengular!\n"
 # define ERR_WAL "Map is not close with wall!\n"
+# define ERR_WIN "Window creation failed!\n"
 
 // silinecek
 
@@ -35,8 +37,18 @@
 
 //
 
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	int		map_w;
+	int		map_h;
+}t_game;
+
+
 char	**read_ber_file(char *ber);
 char	**check_map(char **ber);
-void	flood_fill(char **map);
+char	**flood_fill(char **map);
+void	mlx_processes(char **map);
 void	error(char *err);
 #endif

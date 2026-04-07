@@ -79,7 +79,7 @@ static void is_it_fiilled(char **map)
 	}
 }
 
-void	flood_fill(char **map)
+char	**flood_fill(char **map)
 {
 	char	**temp;
 	int		p_rc[2];
@@ -88,4 +88,5 @@ void	flood_fill(char **map)
 	find_player(temp, p_rc);
 	fill(temp, p_rc[0], p_rc[1]);
 	is_it_fiilled(temp);
+	return (map);
 }
