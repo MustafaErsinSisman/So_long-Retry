@@ -12,27 +12,29 @@
 
 #include "so_long.h"
 
-static void	map_size(char **map, t_game *game)
+static void	map_size(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (game->map[i])
 		i++;
 	game->map_h = i;
-	game->map_w = ft_strlen(map[0]);
+	game->map_w = ft_strlen(game->map[0]);
 }
 
 void	mlx_processes(char **map)
 {
 	t_game	game;
 
-	map_size(map, &game);
+	game.map = map;
+	map_size(&game);
 	game.mlx = mlx_init();
 	if (!game.mlx)
 		error(ERR_INI);
 	game.win = mlx_new_window(game.mlx, game.map_w * 64, game.map_h * 64, "So_long");
 	if (!game.win)
 		error(ERR_WIN);
+	load_images(&game);
 	mlx_loop(game.mlx);
 }

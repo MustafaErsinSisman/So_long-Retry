@@ -3,7 +3,7 @@ CC		= cc
 CFLAGS 		= -Wall -Wextra -Werror
 LIBS		= collector/collector.a libft/libft.a get_next_line/get_next_line.a minilibx-linux/libmlx.a -L minilibx-linux -lmlx -L/usr/X11R6/lib -lXext -lX11 -lm -lbsd
 
-SRCS		= main.c map_reader.c map_checker.c flood_fill.c utils.c
+SRCS		= main.c map_reader.c map_checker.c flood_fill.c mlx_processes.c render.c utils.c
 OBJS		= $(SRCS:.c=.o)
 
 RM		= rm -f

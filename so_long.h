@@ -24,6 +24,7 @@
 # define ERR_ASS "Wrong asset!\n"
 # define ERR_CNT "Wrong count of P, E or C!\n"
 # define ERR_EMP "Empty map!\n"
+# define ERR_IMG "Could not load images!\n"
 # define ERR_INI "MLX initialization failed!\n"
 # define ERR_MAP "Map is not valid!\n"
 # define ERR_OPN "File couldn't open!\n"
@@ -41,8 +42,15 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
+	char	**map;
 	int		map_w;
 	int		map_h;
+	void	*img_wall_0;
+	void	*img_wall_1;
+	void	*img_player;
+	void	*img_key;
+	void	*img_open_door;
+	void	*img_close_door;
 }t_game;
 
 
@@ -50,5 +58,7 @@ char	**read_ber_file(char *ber);
 char	**check_map(char **ber);
 char	**flood_fill(char **map);
 void	mlx_processes(char **map);
+void	load_images(t_game *game);
+void	render_map(t_game *game);
 void	error(char *err);
 #endif
