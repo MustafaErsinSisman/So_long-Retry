@@ -17,8 +17,8 @@ void	load_images(t_game *game)
 	int	w;
 	int	h;
 
-	game->wall_0 = mlx_xpm_file_to_image(game->mlx, "xpms/wall_0.xpm", &w, &h);
-	game->wall_1 = mlx_xpm_file_to_image(game->mlx, "xpms/wall_1.xpm", &w, &h);
+	game->wall_0 = mlx_xpm_file_to_image(game->mlx, "xpms/wall0.xpm", &w, &h);
+	game->wall_1 = mlx_xpm_file_to_image(game->mlx, "xpms/wall1.xpm", &w, &h);
 	game->player = mlx_xpm_file_to_image(game->mlx, "xpms/player.xpm", &w, &h);
 	game->key = mlx_xpm_file_to_image(game->mlx, "xpms/key.xpm", &w, &h);
 	game->door0 = mlx_xpm_file_to_image(game->mlx, "xpms/door0.xpm", &w, &h);
