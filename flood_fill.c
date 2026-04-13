@@ -45,7 +45,7 @@ static void	find_player(char **map, int p_coordinate[2])
 			{
 				p_coordinate[0] = row;
 				p_coordinate[1] = col;
-				break;
+				break ;
 			}
 		}
 	}
@@ -62,7 +62,7 @@ static void	fill(char **map, int row, int col)
 	fill(map, row, col - 1);
 }
 
-static void is_it_fiilled(char **map)
+static void	is_it_fiilled(char **map)
 {
 	int	i;
 	int	j;

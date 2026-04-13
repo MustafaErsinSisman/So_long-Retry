@@ -13,12 +13,14 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./collector/collector.h"
-# include "./libft/libft.h"
-# include "./get_next_line/get_next_line.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# include "./collector/collector.h"
+# include "./libft/libft.h"
+# include "./get_next_line/get_next_line.h"
+# include "minilibx-linux/mlx.h"
 
 # define ERR_ARG "Wrong argument!\n"
 # define ERR_ASS "Wrong asset!\n"
@@ -45,14 +47,13 @@ typedef struct s_game
 	char	**map;
 	int		map_w;
 	int		map_h;
-	void	*img_wall_0;
-	void	*img_wall_1;
-	void	*img_player;
-	void	*img_key;
-	void	*img_open_door;
-	void	*img_close_door;
-}t_game;
-
+	void	*wall_0;
+	void	*wall_1;
+	void	*player;
+	void	*key;
+	void	*door0;
+	void	*door1;
+}	t_game;
 
 char	**read_ber_file(char *ber);
 char	**check_map(char **ber);

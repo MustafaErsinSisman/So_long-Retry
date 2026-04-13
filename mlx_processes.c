@@ -32,9 +32,11 @@ void	mlx_processes(char **map)
 	game.mlx = mlx_init();
 	if (!game.mlx)
 		error(ERR_INI);
-	game.win = mlx_new_window(game.mlx, game.map_w * 64, game.map_h * 64, "So_long");
+	game.win = mlx_new_window(game.mlx, game.map_w * 64,
+			game.map_h * 64, "So_long");
 	if (!game.win)
 		error(ERR_WIN);
 	load_images(&game);
+	render_map(&game);
 	mlx_loop(game.mlx);
 }
