@@ -49,7 +49,7 @@ void    init_game_vars(t_game *game)
     }
 }
 
-static void	put_image(t_game *game, void *img, int row, int col)
+void	put_image(t_game *game, void *img, int row, int col)
 {
 	mlx_put_image_to_window(game->mlx, game->win, img, col * 64, row * 64);
 }

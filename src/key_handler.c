@@ -29,6 +29,7 @@ int	close_game(t_game *game)
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
+	ft_printf("Game closed. Total moves: %d\n", game->move_count);
 	free(game->mlx); 
 	ft_free(); 
 	exit(0);
@@ -45,10 +46,8 @@ static void	move_player(t_game *game, int row_change, int col_change)
 		return ;
 	game->map[game->p_row][game->p_col] = '0';
 	game->map[new_row][new_col] = 'P';
-	mlx_put_image_to_window(game->mlx, game->win, game->wall_0, 
-		game->p_col * 64, game->p_row * 64);
-	mlx_put_image_to_window(game->mlx, game->win, game->player, 
-		new_col * 64, new_row * 64);
+	put_image(game, game->wall_0, game->p_row, game->p_col);
+	put_image(game, game->player, new_row, new_col);
 	game->p_row = new_row;
 	game->p_col = new_col;
 	game->move_count++;
