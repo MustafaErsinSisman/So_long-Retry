@@ -17,10 +17,17 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "./collector/collector.h"
-# include "./libft/libft.h"
-# include "./get_next_line/get_next_line.h"
-# include "minilibx-linux/mlx.h"
+# include "../collector/collector.h"
+# include "../libft/libft.h"
+# include "../ft_printf/ft_printf.h"
+# include "../get_next_line/get_next_line.h"
+# include "../minilibx-linux/mlx.h"
+
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
 
 # define ERR_ARG "Wrong argument!\n"
 # define ERR_ASS "Wrong asset!\n"
@@ -33,12 +40,6 @@
 # define ERR_REC "Map is not rectengular!\n"
 # define ERR_WAL "Map is not close with wall!\n"
 # define ERR_WIN "Window creation failed!\n"
-
-// silinecek
-
-# include <stdio.h>
-
-//
 
 typedef struct s_game
 {
@@ -53,6 +54,10 @@ typedef struct s_game
 	void	*key;
 	void	*door0;
 	void	*door1;
+	int		p_row;
+	int		p_col;
+	int		coin_count;
+	int		move_count;
 }	t_game;
 
 char	**read_ber_file(char *ber);
@@ -61,5 +66,8 @@ char	**flood_fill(char **map);
 void	mlx_processes(char **map);
 void	load_images(t_game *game);
 void	render_map(t_game *game);
+int	close_game(t_game *game);
+int	key_press(int keycode, t_game *game);
 void	error(char *err);
+
 #endif

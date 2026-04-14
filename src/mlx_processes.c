@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 static void	map_size(t_game *game)
 {
@@ -38,5 +38,7 @@ void	mlx_processes(char **map)
 		error(ERR_WIN);
 	load_images(&game);
 	render_map(&game);
+	mlx_hook(game.win, 17, 0, close_game, &game);
+	mlx_key_hook(game.win, key_press, &game);
 	mlx_loop(game.mlx);
 }
