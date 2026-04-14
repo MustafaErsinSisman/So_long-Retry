@@ -28,6 +28,27 @@ void	load_images(t_game *game)
 		error(ERR_IMG);
 }
 
+void    init_game_vars(t_game *game)
+{
+    int row;
+    int col;
+
+    game->move_count = 0;
+    row = -1;
+    while (game->map[++row])
+    {
+        col = -1;
+        while (game->map[row][++col])
+        {
+            if (game->map[row][col] == 'P')
+            {
+                game->p_row = row;
+                game->p_col = col;
+            }
+        }
+    }
+}
+
 static void	put_image(t_game *game, void *img, int row, int col)
 {
 	mlx_put_image_to_window(game->mlx, game->win, img, col * 64, row * 64);

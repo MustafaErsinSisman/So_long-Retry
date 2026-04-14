@@ -34,14 +34,14 @@ int	close_game(t_game *game)
 	exit(0);
 }
 
-void	move_player(t_game *game, int row_change, int col_change)
+static void	move_player(t_game *game, int row_change, int col_change)
 {
 	int	new_row;
 	int	new_col;
 
 	new_row = game->p_row + row_change;
 	new_col = game->p_col + col_change;
-	if (game->map[new_row][new_col] == '1')
+	if (game->map[new_row][new_col] == '1' || (game->map[new_row][new_col] == 'E'))
 		return ;
 	game->map[game->p_row][game->p_col] = '0';
 	game->map[new_row][new_col] = 'P';

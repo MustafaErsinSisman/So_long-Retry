@@ -65,6 +65,7 @@ char	**check_map(char **ber);
 char	**flood_fill(char **map);
 void	mlx_processes(char **map);
 void	load_images(t_game *game);
+void	init_game_vars(t_game *game);
 void	render_map(t_game *game);
 int	close_game(t_game *game);
 int	key_press(int keycode, t_game *game);
