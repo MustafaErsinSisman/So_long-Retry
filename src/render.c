@@ -28,34 +28,40 @@ void	load_images(t_game *game)
 		error(ERR_IMG);
 }
 
-void    init_game_vars(t_game *game)
+static void	set_assets_positions(t_game *game, int row, int col)
 {
-    int row;
-    int col;
-
-    game->move_count = 0;
-    game->collected = 0;
-    game->coin_count = 0;
-    row = -1;
-    while (game->map[++row])
-    {
-        col = -1;
-        while (game->map[row][++col])
-        {
-            if (game->map[row][col] == 'P')
-            {
-                game->p_row = row;
-                game->p_col = col;
-            }
-	    if (game->map[row][col] == 'E')
-	    {
+	if (game->map[row][col] == 'P')
+	{
+		game->p_row = row;
+		game->p_col = col;
+	}
+	else if (game->map[row][col] == 'E')
+	{
 		game->e_row = row;
 		game->e_col = col;
-	    }
-	    if (game->map[row][col] == 'C')
-		game->coin_count++;
-        }
-    }
+	}
+}
+
+void	init_game_vars(t_game *game)
+{
+	int	row;
+	int	col;
+
+	game->move_count = 0;
+	game->collected = 0;
+	game->coin_count = 0;
+	row = -1;
+	while (game->map[++row])
+	{
+		col = -1;
+		while (game->map[row][++col])
+		{
+			if (game->map[row][col] == 'P' || game->map[row][col] == 'E')
+				set_assets_positions(game, row, col);
+			if (game->map[row][col] == 'C')
+				game->coin_count++;
+		}
+	}
 }
 
 void	put_image(t_game *game, void *img, int row, int col)

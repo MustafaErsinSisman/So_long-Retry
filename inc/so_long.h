@@ -78,9 +78,9 @@ void	load_images(t_game *game);
 void	init_game_vars(t_game *game);
 void	put_image(t_game *game, void *img, int row, int col);
 void	render_map(t_game *game);
-int	close_game(t_game *game);
-int	key_press(int keycode, t_game *game);
+int		close_game(t_game *game);
+int		key_press(int keycode, t_game *game);
 void	error(char *err);
-int	message(char *msg, int count);
+int		message(char *msg, int count);
 
 #endif

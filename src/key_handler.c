@@ -30,8 +30,8 @@ int	close_game(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	ft_printf("Game closed. Total moves: %d\n", game->move_count);
-	free(game->mlx); 
-	ft_free(); 
+	free(game->mlx);
+	ft_free();
 	exit(0);
 }
 
