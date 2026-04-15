@@ -82,9 +82,9 @@ void	render_map(t_game *game)
 		{
 			if (game->map[row][col] == '1')
 				put_image(game, game->wall_1, row, col);
-			else
+			else if (game->map[row][col] == '0')
 				put_image(game, game->wall_0, row, col);
-			if (game->map[row][col] == 'P')
+			else if (game->map[row][col] == 'P')
 				put_image(game, game->player, row, col);
 			else if (game->map[row][col] == 'C')
 				put_image(game, game->key, row, col);

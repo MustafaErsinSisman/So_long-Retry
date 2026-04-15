@@ -14,8 +14,8 @@
 
 void	error(char *err)
 {
-	write(2, "Error\n", 6);
-	write(2, err, ft_strlen(err));
+	ft_printf("Error\n");
+	ft_printf("%s\n", err);
 	ft_free();
 	exit(1);
 }

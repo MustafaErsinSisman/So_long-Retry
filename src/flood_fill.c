@@ -82,11 +82,11 @@ static void	is_it_fiilled(char **map)
 char	**flood_fill(char **map)
 {
 	char	**temp;
-	int		p_rc[2];
+	int		p_coordinate[2];
 
 	temp = copy_map(map);
-	find_player(temp, p_rc);
-	fill(temp, p_rc[0], p_rc[1]);
+	find_player(temp, p_coordinate);
+	fill(temp, p_coordinate[0], p_coordinate[1]);
 	is_it_fiilled(temp);
 	return (map);
 }

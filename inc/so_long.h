@@ -29,24 +29,25 @@
 # define KEY_S 115
 # define KEY_D 100
 
-# define MSG_COL "All coins collected! Find the exit!"
-# define MSG_CON "Coins collected"
-# define MSG_EXT "Collect all coins to exit!"
+# define MSG_COL "All keys collected! Find the exit!"
+# define MSG_CON "Keys collected"
+# define MSG_EXT "Collect all keys to exit!"
+# define MSG_FIN "Game closed. Total moves"
 # define MSG_MOV "Move count"
 # define MSG_WIN "Congratulations! You won!"
 # define MSG_WLL "Am I a ghost? I can't walk through walls!"
 
-# define ERR_ARG "Wrong argument!\n"
-# define ERR_ASS "Wrong asset!\n"
-# define ERR_CNT "Wrong count of P, E or C!\n"
-# define ERR_EMP "Empty map!\n"
-# define ERR_IMG "Could not load images!\n"
-# define ERR_INI "MLX initialization failed!\n"
-# define ERR_MAP "Map is not valid!\n"
-# define ERR_OPN "File couldn't open!\n"
-# define ERR_REC "Map is not rectengular!\n"
-# define ERR_WAL "Map is not close with wall!\n"
-# define ERR_WIN "Window creation failed!\n"
+# define ERR_ARG "Wrong argument!"
+# define ERR_ASS "Wrong asset!"
+# define ERR_CNT "Wrong count of P, E or C!"
+# define ERR_EMP "Empty map!"
+# define ERR_IMG "Could not load images!"
+# define ERR_INI "MLX initialization failed!"
+# define ERR_MAP "Map is not valid!"
+# define ERR_OPN "File couldn't open!"
+# define ERR_REC "Map is not rectengular!"
+# define ERR_WAL "Map is not close with wall!"
+# define ERR_WIN "Window creation failed!"
 
 typedef struct s_game
 {
