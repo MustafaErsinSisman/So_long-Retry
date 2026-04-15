@@ -19,3 +19,12 @@ void	error(char *err)
 	ft_free();
 	exit(1);
 }
+
+int	message(char *msg, int count)
+{
+	if (count >= 0)
+		ft_printf("%s: %d\n", msg, count);
+	else
+		ft_printf("%s\n", msg);
+	return (1);
+}

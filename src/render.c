@@ -34,6 +34,8 @@ void    init_game_vars(t_game *game)
     int col;
 
     game->move_count = 0;
+    game->collected = 0;
+    game->coin_count = 0;
     row = -1;
     while (game->map[++row])
     {
@@ -45,6 +47,13 @@ void    init_game_vars(t_game *game)
                 game->p_row = row;
                 game->p_col = col;
             }
+	    if (game->map[row][col] == 'E')
+	    {
+		game->e_row = row;
+		game->e_col = col;
+	    }
+	    if (game->map[row][col] == 'C')
+		game->coin_count++;
         }
     }
 }

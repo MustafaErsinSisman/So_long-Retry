@@ -29,6 +29,13 @@
 # define KEY_S 115
 # define KEY_D 100
 
+# define MSG_COL "All coins collected! Find the exit!"
+# define MSG_CON "Coins collected"
+# define MSG_EXT "Collect all coins to exit!"
+# define MSG_MOV "Move count"
+# define MSG_WIN "Congratulations! You won!"
+# define MSG_WLL "Am I a ghost? I can't walk through walls!"
+
 # define ERR_ARG "Wrong argument!\n"
 # define ERR_ASS "Wrong asset!\n"
 # define ERR_CNT "Wrong count of P, E or C!\n"
@@ -58,6 +65,9 @@ typedef struct s_game
 	int		p_col;
 	int		coin_count;
 	int		move_count;
+	int		collected;
+	int		e_row;
+	int		e_col;
 }	t_game;
 
 char	**read_ber_file(char *ber);
@@ -71,5 +81,6 @@ void	render_map(t_game *game);
 int	close_game(t_game *game);
 int	key_press(int keycode, t_game *game);
 void	error(char *err);
+int	message(char *msg, int count);
 
 #endif

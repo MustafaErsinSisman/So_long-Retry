@@ -35,6 +35,33 @@ int	close_game(t_game *game)
 	exit(0);
 }
 
+static int	is_valid_move(t_game *game, int new_row, int new_col)
+{
+	if (game->map[new_row][new_col] == '1')
+		return (message(MSG_WLL, -1));
+	if (game->map[new_row][new_col] == 'E')
+	{
+		if (game->collected == game->coin_count)
+		{
+			message(MSG_WIN, -1);
+			close_game(game);
+		}
+		else
+			return (message(MSG_EXT, -1));
+	}
+	if (game->map[new_row][new_col] == 'C')
+	{
+		game->collected++;
+		message(MSG_CON, game->collected);
+		if (game->collected == game->coin_count)
+		{
+			message(MSG_COL, -1);
+			put_image(game, game->door0, game->e_row, game->e_col);
+		}
+	}
+	return (0);
+}
+
 static void	move_player(t_game *game, int row_change, int col_change)
 {
 	int	new_row;
@@ -42,7 +69,7 @@ static void	move_player(t_game *game, int row_change, int col_change)
 
 	new_row = game->p_row + row_change;
 	new_col = game->p_col + col_change;
-	if (game->map[new_row][new_col] == '1' || (game->map[new_row][new_col] == 'E'))
+	if (is_valid_move(game, new_row, new_col))
 		return ;
 	game->map[game->p_row][game->p_col] = '0';
 	game->map[new_row][new_col] = 'P';
@@ -51,7 +78,7 @@ static void	move_player(t_game *game, int row_change, int col_change)
 	game->p_row = new_row;
 	game->p_col = new_col;
 	game->move_count++;
-	ft_printf("Move count: %d\n", game->move_count);
+	message(MSG_MOV, game->move_count);
 }
 
 int	key_press(int keycode, t_game *game)
