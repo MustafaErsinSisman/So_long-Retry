@@ -29,7 +29,7 @@ int	close_game(t_game *game)
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
-	message(MSG_FIN, game->move_count);
+	message(MSG_FIN, game->move_count, R);
 	free(game->mlx);
 	ft_free();
 	exit(0);
@@ -38,24 +38,24 @@ int	close_game(t_game *game)
 static int	is_valid_move(t_game *game, int new_row, int new_col)
 {
 	if (game->map[new_row][new_col] == '1')
-		return (message(MSG_WLL, -1));
+		return (message(MSG_WLL, -1, R));
 	if (game->map[new_row][new_col] == 'E')
 	{
 		if (game->collected == game->coin_count)
 		{
-			message(MSG_WIN, -1);
+			message(MSG_WIN, -1, G);
 			close_game(game);
 		}
 		else
-			return (message(MSG_EXT, -1));
+			return (message(MSG_EXT, -1, R));
 	}
 	if (game->map[new_row][new_col] == 'C')
 	{
 		game->collected++;
-		message(MSG_CON, game->collected);
+		message(MSG_CON, game->collected, Y);
 		if (game->collected == game->coin_count)
 		{
-			message(MSG_COL, -1);
+			message(MSG_COL, -1, G);
 			put_image(game, game->door0, game->e_row, game->e_col);
 		}
 	}
@@ -78,7 +78,7 @@ static void	move_player(t_game *game, int row_change, int col_change)
 	game->p_row = new_row;
 	game->p_col = new_col;
 	game->move_count++;
-	message(MSG_MOV, game->move_count);
+	message(MSG_MOV, game->move_count, B);
 }
 
 int	key_press(int keycode, t_game *game)

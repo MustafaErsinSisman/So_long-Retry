@@ -23,6 +23,12 @@
 # include "../get_next_line/get_next_line.h"
 # include "../minilibx-linux/mlx.h"
 
+# define R "\033[31m"
+# define G "\033[32m"
+# define Y "\033[33m"
+# define B "\033[34m"
+# define RST "\033[0m"
+
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_A 97
@@ -82,6 +88,6 @@ void	render_map(t_game *game);
 int		close_game(t_game *game);
 int		key_press(int keycode, t_game *game);
 void	error(char *err);
-int		message(char *msg, int count);
+int		message(char *msg, int count, char *color);
 
 #endif
