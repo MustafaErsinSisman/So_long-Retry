@@ -1,3 +1,9 @@
+RESET		= \033[0m
+RED         	= \033[31m
+GREEN       	= \033[32m
+YELLOW      	= \033[33m
+BLUE        	= \033[34m
+
 NAME            = so_long
 
 CC              = cc
@@ -33,21 +39,24 @@ RM              = rm -rf
 all: libs $(NAME)
 
 libs:
-	@echo "Compiling libraries..."
+	@echo "$(BLUE)Compiling libraries... (Please wait)$(RESET)"
 	@make -s -C $(DIR_GNL)
 	@make -s -C $(DIR_FTPRINTF)
 	@make -s -C $(DIR_LIBFT)
 	@make -s -C $(DIR_COLLECTOR)
-	@make -s -C $(DIR_MINILBIX) > /dev/null 2>&1
+	@make -s -C $(DIR_MINILBIX)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@echo "$(YELLOW)Compiled: $< -> $@$(RESET)"
 
 $(NAME): $(OBJS)
-	@echo "Linking $(NAME)..."
+	@echo "$(BLUE)Linking $(NAME)...$(RESET)"
 	@$(CC) $(OBJS) $(LIBS) -o $(NAME)
-	@echo "Game ready! Run with: ./$(NAME) maps/map.ber"
+	@echo "$(GREEN)========================================$(RESET)"
+	@echo "$(GREEN)Game ready! Run with: ./$(NAME) (FILE_PATH).ber$(RESET)"
+	@echo "$(GREEN)========================================$(RESET)"
 
 clean:
 	@$(RM) $(OBJ_DIR)
@@ -55,16 +64,16 @@ clean:
 	@make -s -C $(DIR_FTPRINTF) clean
 	@make -s -C $(DIR_LIBFT) clean
 	@make -s -C $(DIR_COLLECTOR) clean
-	@make -s -C $(DIR_MINILBIX) clean > /dev/null 2>&1
-	@echo "Object files cleaned."
+	@make -s -C $(DIR_MINILBIX) clean
+	@echo "$(RED)Object files cleaned.$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
 	@make -s -C $(DIR_GNL) fclean
 	@make -s -C $(DIR_FTPRINTF) fclean
 	@make -s -C $(DIR_LIBFT) fclean
-	@make -s -C $(DIR_COLLECTOR) fclean > /dev/null 2>&1
-	@echo "Fully cleaned."
+	@make -s -C $(DIR_COLLECTOR) fclean
+	@echo "$(RED)Fully cleaned.$(RESET)"
 
 re: fclean all
 
