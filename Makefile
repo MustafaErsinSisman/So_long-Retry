@@ -39,7 +39,7 @@ RM              = rm -rf
 all: libs $(NAME)
 
 libs:
-	@echo "$(BLUE)Compiling libraries... (Please wait)$(RESET)"
+	@echo "$(BLUE)Compiling libraries...$(RESET)"
 	@make -s -C $(DIR_GNL)
 	@make -s -C $(DIR_FTPRINTF)
 	@make -s -C $(DIR_LIBFT)
@@ -55,7 +55,7 @@ $(NAME): $(OBJS)
 	@echo "$(BLUE)Linking $(NAME)...$(RESET)"
 	@$(CC) $(OBJS) $(LIBS) -o $(NAME)
 	@echo "$(GREEN)========================================$(RESET)"
-	@echo "$(GREEN)Game ready! Run with: ./$(NAME) (FILE_PATH).ber$(RESET)"
+	@echo "$(GREEN)Game ready! Run with: ./$(NAME) (FILE_NAME).ber$(RESET)"
 	@echo "$(GREEN)========================================$(RESET)"
 
 clean:
