@@ -39,7 +39,7 @@ void	mlx_processes(char **map)
 	load_images(&game);
 	init_game_vars(&game);
 	render_map(&game);
-	update_hud(&game, NULL, 0xFFFFFF);
+	update_hud(&game, NULL, C_MOV);
 	mlx_hook(game.win, 17, 0, close_game, &game);
 	mlx_key_hook(game.win, key_press, &game);
 	mlx_loop(game.mlx);

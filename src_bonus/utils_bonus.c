@@ -69,13 +69,13 @@ int	update_hud(t_game *g, char *msg, int msg_color)
 		mlx_string_put(g->mlx, g->win, 15, 20, msg_color, msg);
 	else
 	{
-		g->color = 0xFFFFFF;
+		g->color = C_MOV;
 		draw_num_hud(g, "Moves: ", g->move_count, 20);
 		if (g->collected == g->coin_count)
-			mlx_string_put(g->mlx, g->win, 15, 40, 0x00FF00, MSG_COL);
+			mlx_string_put(g->mlx, g->win, 15, 40, C_EXT, MSG_COL);
 		else
 		{
-			g->color = 0xFFFF00;
+			g->color = C_COL;
 			draw_num_hud(g, "Keys: ", g->collected, 40);
 		}
 	}
