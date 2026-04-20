@@ -1,0 +1,95 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: musisman <musisman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/20 15:48:48 by musisman          #+#    #+#             */
+/*   Updated: 2026/04/20 15:48:48 by musisman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc_bonus/so_long_bonus.h"
+
+void	load_images(t_game *game)
+{
+	int	w;
+	int	h;
+
+	game->wall_0 = mlx_xpm_file_to_image(game->mlx, "xpms/wall0.xpm", &w, &h);
+	game->wall_1 = mlx_xpm_file_to_image(game->mlx, "xpms/wall1.xpm", &w, &h);
+	game->player = mlx_xpm_file_to_image(game->mlx, "xpms/player.xpm", &w, &h);
+	game->key = mlx_xpm_file_to_image(game->mlx, "xpms/key.xpm", &w, &h);
+	game->door0 = mlx_xpm_file_to_image(game->mlx, "xpms/door0.xpm", &w, &h);
+	game->door1 = mlx_xpm_file_to_image(game->mlx, "xpms/door1.xpm", &w, &h);
+	if (!game->wall_0 || !game->wall_1 || !game->player
+		|| !game->key || !game->door0 || !game->door1)
+		error(ERR_IMG);
+}
+
+static void	set_assets_positions(t_game *game, int row, int col)
+{
+	if (game->map[row][col] == 'P')
+	{
+		game->p_row = row;
+		game->p_col = col;
+	}
+	else if (game->map[row][col] == 'E')
+	{
+		game->e_row = row;
+		game->e_col = col;
+	}
+}
+
+void	init_game_vars(t_game *game)
+{
+	int	row;
+	int	col;
+
+	game->move_count = 0;
+	game->collected = 0;
+	game->coin_count = 0;
+	row = -1;
+	while (game->map[++row])
+	{
+		col = -1;
+		while (game->map[row][++col])
+		{
+			if (game->map[row][col] == 'P' || game->map[row][col] == 'E')
+				set_assets_positions(game, row, col);
+			if (game->map[row][col] == 'C')
+				game->coin_count++;
+		}
+	}
+}
+
+void	put_image(t_game *game, void *img, int row, int col)
+{
+	mlx_put_image_to_window(game->mlx, game->win, img, col * 64, row * 64);
+}
+
+void	render_map(t_game *game)
+{
+	int	row;
+	int	col;
+
+	row = -1;
+	while (game->map[++row])
+	{
+		col = -1;
+		while (game->map[row][++col])
+		{
+			if (game->map[row][col] == '1')
+				put_image(game, game->wall_1, row, col);
+			else if (game->map[row][col] == '0')
+				put_image(game, game->wall_0, row, col);
+			else if (game->map[row][col] == 'P')
+				put_image(game, game->player, row, col);
+			else if (game->map[row][col] == 'C')
+				put_image(game, game->key, row, col);
+			else if (game->map[row][col] == 'E')
+				put_image(game, game->door1, row, col);
+		}
+	}
+}
