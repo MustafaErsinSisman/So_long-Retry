@@ -26,6 +26,8 @@ int	close_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->door0);
 	if (game->door1)
 		mlx_destroy_image(game->mlx, game->door1);
+	if (game->enemy)
+		mlx_destroy_image(game->mlx, game->enemy);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
@@ -37,6 +39,11 @@ int	close_game(t_game *game)
 
 static int	is_valid_move(t_game *game, int new_row, int new_col)
 {
+	if (game->map[new_row][new_col] == 'V')
+	{
+		message(MSG_OVR, -1, R);
+		close_game(game);
+	}
 	if (game->map[new_row][new_col] == '1')
 		return (update_hud(game, MSG_WLL, C_WAR));
 	if (game->map[new_row][new_col] == 'E')

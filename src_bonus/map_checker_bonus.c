@@ -50,7 +50,9 @@ static void	is_is_asset(char **ber)
 		while (ber[i][++j])
 		{
 			c = ber[i][j];
-			if (!(c == '0' || c == '1' || c == 'P' || c == 'E' || c == 'C'))
+			if (!(c == '0' || c == '1'
+					|| c == 'P' || c == 'E'
+					|| c == 'C' || c == 'V'))
 				error(ERR_ASS);
 		}
 	}

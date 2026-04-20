@@ -23,8 +23,9 @@ void	load_images(t_game *game)
 	game->key = mlx_xpm_file_to_image(game->mlx, "xpms/key.xpm", &w, &h);
 	game->door0 = mlx_xpm_file_to_image(game->mlx, "xpms/door0.xpm", &w, &h);
 	game->door1 = mlx_xpm_file_to_image(game->mlx, "xpms/door1.xpm", &w, &h);
+	game->enemy = mlx_xpm_file_to_image(game->mlx, "xpms/enemy.xpm", &w, &h);
 	if (!game->wall_0 || !game->wall_1 || !game->player
-		|| !game->key || !game->door0 || !game->door1)
+		|| !game->key || !game->door0 || !game->door1 || !game->enemy)
 		error(ERR_IMG);
 }
 
@@ -90,6 +91,8 @@ void	render_map(t_game *game)
 				put_image(game, game->key, row, col);
 			else if (game->map[row][col] == 'E')
 				put_image(game, game->door1, row, col);
+			else if (game->map[row][col] == 'V')
+				put_image(game, game->enemy, row, col);
 		}
 	}
 }

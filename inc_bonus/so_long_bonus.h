@@ -45,6 +45,7 @@
 # define MSG_FIN "Game closed. Total moves"
 # define MSG_KEY "Key count: "
 # define MSG_MOV "Move count: "
+# define MSG_OVR "Game over!"
 # define MSG_WIN "Congratulations! You won!"
 # define MSG_WLL "Am I a ghost?"
 
@@ -73,6 +74,7 @@ typedef struct s_game
 	void	*key;
 	void	*door0;
 	void	*door1;
+	void	*enemy;
 	int		p_row;
 	int		p_col;
 	int		coin_count;
