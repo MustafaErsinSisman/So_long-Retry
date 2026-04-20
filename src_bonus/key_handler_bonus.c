@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc_bonus/so_long_bonus.h"
+#include "so_long_bonus.h"
 
 int	close_game(t_game *game)
 {
@@ -38,7 +38,7 @@ int	close_game(t_game *game)
 static int	is_valid_move(t_game *game, int new_row, int new_col)
 {
 	if (game->map[new_row][new_col] == '1')
-		return (message(MSG_WLL, -1, R));
+		return (update_hud(game, MSG_WLL, C_WAR));
 	if (game->map[new_row][new_col] == 'E')
 	{
 		if (game->collected == game->coin_count)
@@ -47,17 +47,13 @@ static int	is_valid_move(t_game *game, int new_row, int new_col)
 			close_game(game);
 		}
 		else
-			return (message(MSG_EXT, -1, R));
+			return (update_hud(game, MSG_EXT, C_WAR));
 	}
 	if (game->map[new_row][new_col] == 'C')
 	{
 		game->collected++;
-		message(MSG_CON, game->collected, Y);
 		if (game->collected == game->coin_count)
-		{
-			message(MSG_COL, -1, G);
 			put_image(game, game->door0, game->e_row, game->e_col);
-		}
 	}
 	return (0);
 }
@@ -78,7 +74,7 @@ static void	move_player(t_game *game, int row_change, int col_change)
 	game->p_row = new_row;
 	game->p_col = new_col;
 	game->move_count++;
-	message(MSG_MOV, game->move_count, B);
+	update_hud(game, NULL, C_MOV);
 }
 
 int	key_press(int keycode, t_game *game)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "so_long.h"
 
 static void	map_size(t_game *game)
 {

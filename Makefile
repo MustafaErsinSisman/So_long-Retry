@@ -24,7 +24,7 @@ DIR_LIBFT	= libft
 DIR_COLLECTOR	= collector
 DIR_MINILBIX	= minilibx-linux
 
-INC		= -I $(INC_DIR) -I $(DIR_LIBFT) -I $(DIR_GNL) -I $(DIR_FTPRINTF) -I $(DIR_COLLECTOR) -I $(DIR_MINILBIX)
+INC		= -I $(INC_DIR) -I $(INC_BON_DIR) -I $(DIR_LIBFT) -I $(DIR_GNL) -I $(DIR_FTPRINTF) -I $(DIR_COLLECTOR) -I $(DIR_MINILBIX)
 
 SRCS_NAMES	= main.c map_reader.c map_checker.c flood_fill.c \
                   mlx_processes.c render.c key_handler.c utils.c
@@ -48,9 +48,9 @@ LIBS		= $(DIR_COLLECTOR)/collector.a \
 RM		= rm -rf
 
 define print_msg
-	@echo "$1===============================================$(RESET)"
+	@echo "$1============================================================$(RESET)"
 	@echo "$1$2$(RESET)"
-	@echo "$1===============================================$(RESET)"
+	@echo "$1============================================================$(RESET)"
 endef
 
 all: libs $(NAME)

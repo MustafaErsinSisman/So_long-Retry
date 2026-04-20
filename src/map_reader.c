@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "so_long.h"
 
 static int	get_line_count(char *ber)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc_bonus/so_long_bonus.h"
+#include "so_long_bonus.h"
 
 int	main(int ac, char **av)
 {

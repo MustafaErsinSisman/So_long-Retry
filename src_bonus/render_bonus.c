@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc_bonus/so_long_bonus.h"
+#include "so_long_bonus.h"
 
 void	load_images(t_game *game)
 {

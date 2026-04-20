@@ -17,11 +17,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "../collector/collector.h"
-# include "../libft/libft.h"
-# include "../ft_printf/ft_printf.h"
-# include "../get_next_line/get_next_line.h"
-# include "../minilibx-linux/mlx.h"
+# include "collector.h"
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
+# include "mlx.h"
 
 # define R "\033[31m"
 # define G "\033[32m"

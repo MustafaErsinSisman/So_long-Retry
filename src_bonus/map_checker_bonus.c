@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc_bonus/so_long_bonus.h"
+#include "so_long_bonus.h"
 
 static void	is_it_rectengular(char **ber)
 {

@@ -17,11 +17,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# include "../collector/collector.h"
-# include "../libft/libft.h"
-# include "../ft_printf/ft_printf.h"
-# include "../get_next_line/get_next_line.h"
-# include "../minilibx-linux/mlx.h"
+# include "collector.h"
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
+# include "mlx.h"
 
 # define R "\033[31m"
 # define G "\033[32m"
@@ -29,19 +29,22 @@
 # define B "\033[34m"
 # define RST "\033[0m"
 
+# define C_MOV 0xFFFFFF
+# define C_WAR 0xFF0000
+# define C_COL 0xFFFF00
+# define C_EXT 0x00FF00
+
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
 
-# define MSG_COL "All keys collected! Find the exit!"
-# define MSG_CON "Keys collected"
-# define MSG_EXT "Collect all keys to exit!"
+# define MSG_COL "Keys collected"
+# define MSG_EXT "Collect all keys to exit"
 # define MSG_FIN "Game closed. Total moves"
-# define MSG_MOV "Move count"
 # define MSG_WIN "Congratulations! You won!"
-# define MSG_WLL "Am I a ghost? I can't walk through walls!"
+# define MSG_WLL "Am I a ghost?"
 
 # define ERR_ARG "Wrong argument!"
 # define ERR_ASS "Wrong asset!"
@@ -89,5 +92,6 @@ int		close_game(t_game *game);
 int		key_press(int keycode, t_game *game);
 void	error(char *err);
 int		message(char *msg, int count, char *color);
+int		update_hud(t_game *game, char *center_msg, int center_color);
 
 #endif
