@@ -38,12 +38,12 @@ static void	clear_hud_background(t_game *game)
 		put_image(game, game->wall_1, 0, col);
 }
 
-static void	draw_num_hud(t_game *g, char *pref, int n, int x, int y, int c)
+static void	draw_num_hud(t_game *g, char *pref, int n, int y)
 {
 	char	buf[64];
+	char	rev[16];
 	int		i;
 	int		len;
-	char	rev[16];
 
 	i = -1;
 	while (pref[++i])
@@ -59,21 +59,25 @@ static void	draw_num_hud(t_game *g, char *pref, int n, int x, int y, int c)
 	while (len > 0)
 		buf[i++] = rev[--len];
 	buf[i] = '\0';
-	mlx_string_put(g->mlx, g->win, x, y, c, buf);
+	mlx_string_put(g->mlx, g->win, 15, y, g->color, buf);
 }
 
-int	update_hud(t_game *game, char *msg, int msg_color)
+int	update_hud(t_game *g, char *msg, int msg_color)
 {
-	clear_hud_background(game);
+	clear_hud_background(g);
 	if (msg != NULL)
-		mlx_string_put(game->mlx, game->win, 15, 20, msg_color, msg);
+		mlx_string_put(g->mlx, g->win, 15, 20, msg_color, msg);
 	else
 	{
-		draw_num_hud(game, "Moves: ", game->move_count, 15, 20, C_MOV);
-		if (game->collected == game->coin_count)
-			mlx_string_put(game->mlx, game->win, 15, 40, C_EXT, MSG_COL);
+		g->color = 0xFFFFFF;
+		draw_num_hud(g, "Moves: ", g->move_count, 20);
+		if (g->collected == g->coin_count)
+			mlx_string_put(g->mlx, g->win, 15, 40, 0x00FF00, MSG_COL);
 		else
-			draw_num_hud(game, "Keys: ", game->collected, 15, 40, C_COL);
+		{
+			g->color = 0xFFFF00;
+			draw_num_hud(g, "Keys: ", g->collected, 40);
+		}
 	}
 	return (1);
 }

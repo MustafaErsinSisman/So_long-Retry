@@ -78,6 +78,7 @@ typedef struct s_game
 	int		collected;
 	int		e_row;
 	int		e_col;
+	int		color;
 }	t_game;
 
 char	**read_ber_file(char *ber);
