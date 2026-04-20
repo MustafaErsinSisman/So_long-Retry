@@ -74,7 +74,10 @@ typedef struct s_game
 	void	*key;
 	void	*door0;
 	void	*door1;
-	void	*enemy;
+	void	*enemy0;
+	void	*enemy1;
+	int		timer;
+	int		enemy_state;
 	int		p_row;
 	int		p_col;
 	int		coin_count;
@@ -90,13 +93,15 @@ char	**check_map(char **ber);
 char	**flood_fill(char **map);
 void	mlx_processes(char **map);
 void	load_images(t_game *game);
-void	init_game_vars(t_game *game);
-void	put_image(t_game *game, void *img, int row, int col);
 void	render_map(t_game *game);
+int		update_hud(t_game *game, char *msg, int msg_color);
 int		close_game(t_game *game);
 int		key_press(int keycode, t_game *game);
+int		animate_sprites(t_game *game);
 void	error(char *err);
 int		message(char *msg, int count, char *color);
-int		update_hud(t_game *game, char *center_msg, int center_color);
+void	clear_hud_background(t_game *game);
+void	put_image(t_game *game, void *img, int row, int col);
+void	set_assets_positions(t_game *game, int row, int col);
 
 #endif

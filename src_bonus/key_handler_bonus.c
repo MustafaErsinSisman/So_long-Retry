@@ -26,8 +26,10 @@ int	close_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->door0);
 	if (game->door1)
 		mlx_destroy_image(game->mlx, game->door1);
-	if (game->enemy)
-		mlx_destroy_image(game->mlx, game->enemy);
+	if (game->enemy0)
+		mlx_destroy_image(game->mlx, game->enemy0);
+	if (game->enemy1)
+		mlx_destroy_image(game->mlx, game->enemy1);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);

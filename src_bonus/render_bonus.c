@@ -23,51 +23,13 @@ void	load_images(t_game *game)
 	game->key = mlx_xpm_file_to_image(game->mlx, "xpms/key.xpm", &w, &h);
 	game->door0 = mlx_xpm_file_to_image(game->mlx, "xpms/door0.xpm", &w, &h);
 	game->door1 = mlx_xpm_file_to_image(game->mlx, "xpms/door1.xpm", &w, &h);
-	game->enemy = mlx_xpm_file_to_image(game->mlx, "xpms/enemy.xpm", &w, &h);
-	if (!game->wall_0 || !game->wall_1 || !game->player
-		|| !game->key || !game->door0 || !game->door1 || !game->enemy)
+	game->enemy0 = mlx_xpm_file_to_image(game->mlx, "xpms/enemy0.xpm", &w, &h);
+	game->enemy1 = mlx_xpm_file_to_image(game->mlx, "xpms/enemy1.xpm", &w, &h);
+	if (!game->wall_0 || !game->wall_1
+		|| !game->player || !game->key
+		|| !game->door0 || !game->door1
+		|| !game->enemy0 || !game->enemy1)
 		error(ERR_IMG);
-}
-
-static void	set_assets_positions(t_game *game, int row, int col)
-{
-	if (game->map[row][col] == 'P')
-	{
-		game->p_row = row;
-		game->p_col = col;
-	}
-	else if (game->map[row][col] == 'E')
-	{
-		game->e_row = row;
-		game->e_col = col;
-	}
-}
-
-void	init_game_vars(t_game *game)
-{
-	int	row;
-	int	col;
-
-	game->move_count = 0;
-	game->collected = 0;
-	game->coin_count = 0;
-	row = -1;
-	while (game->map[++row])
-	{
-		col = -1;
-		while (game->map[row][++col])
-		{
-			if (game->map[row][col] == 'P' || game->map[row][col] == 'E')
-				set_assets_positions(game, row, col);
-			if (game->map[row][col] == 'C')
-				game->coin_count++;
-		}
-	}
-}
-
-void	put_image(t_game *game, void *img, int row, int col)
-{
-	mlx_put_image_to_window(game->mlx, game->win, img, col * 64, row * 64);
 }
 
 void	render_map(t_game *game)
@@ -92,7 +54,44 @@ void	render_map(t_game *game)
 			else if (game->map[row][col] == 'E')
 				put_image(game, game->door1, row, col);
 			else if (game->map[row][col] == 'V')
-				put_image(game, game->enemy, row, col);
+				put_image(game, game->enemy0, row, col);
 		}
 	}
+}
+
+static void	render_enemies(t_game *game)
+{
+	int	r;
+	int	c;
+
+	r = -1;
+	while (++r < game->map_h)
+	{
+		c = -1;
+		while (++c < game->map_w)
+		{
+			if (game->map[r][c] == 'V')
+			{
+				if (game->enemy_state == 0)
+					put_image(game, game->enemy0, r, c);
+				else
+					put_image(game, game->enemy1, r, c);
+			}
+		}
+	}
+}
+
+int	animate_sprites(t_game *game)
+{
+	game->timer++;
+	if (game->timer > 40000)
+	{
+		game->timer = 0;
+		if (game->enemy_state == 0)
+			game->enemy_state = 1;
+		else
+			game->enemy_state = 0;
+		render_enemies(game);
+	}
+	return (0);
 }
