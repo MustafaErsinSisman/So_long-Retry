@@ -43,6 +43,8 @@
 # define MSG_COL "Keys collected"
 # define MSG_EXT "Collect all keys to exit"
 # define MSG_FIN "Game closed. Total moves"
+# define MSG_KEY "Key count: "
+# define MSG_MOV "Move count: "
 # define MSG_WIN "Congratulations! You won!"
 # define MSG_WLL "Am I a ghost?"
 
