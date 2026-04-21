@@ -13,7 +13,7 @@
 #ifndef COLLECTOR_H
 # define COLLECTOR_H
 
-# include "../Libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_memblock
 {
